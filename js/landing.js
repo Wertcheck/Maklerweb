@@ -16,19 +16,6 @@
     (root || document).querySelectorAll('[data-price]').forEach(function (n) { n.textContent = priceText(n.getAttribute('data-price')); });
   }
 
-  /* ---------- Skalierte Live-Vorschau (iframe) ---------- */
-  function initScaled(root) {
-    (root || document).querySelectorAll('.scaled').forEach(function (box) {
-      if (box._scaled) return;
-      box._scaled = true;
-      var w = +box.getAttribute('data-w'), hgt = +box.getAttribute('data-h'), f = box.querySelector('iframe');
-      box.style.aspectRatio = w + ' / ' + hgt;
-      function fit() { f.style.transform = 'scale(' + (box.clientWidth / w) + ')'; }
-      fit();
-      if (window.ResizeObserver) new ResizeObserver(fit).observe(box); else window.addEventListener('resize', fit);
-    });
-  }
-
   /* ---------- Grundprodukt ---------- */
   function renderBase() {
     var inc = $('#includes'), exc = $('#excludes');
@@ -51,8 +38,8 @@
   function renderTemplates() {
     cat.templates.forEach(function (t) {
       var card = h('article', { class: 'tpl', 'data-tpl': t.id, 'aria-labelledby': 'tpl-n-' + t.id });
-      var thumb = h('div', { class: 'scaled', 'data-w': '1280', 'data-h': '1100', 'aria-hidden': 'true' }, [
-        h('iframe', { src: t.demo, tabindex: '-1', title: '', loading: 'lazy', width: '1280', height: '1100' })
+      var thumb = h('div', { class: 'tpl__img' }, [
+        h('img', { src: 'assets/thumbs/' + t.id + '.webp', alt: 'Vorschaubild der Vorlage ' + t.name, width: '640', height: '550', loading: 'lazy', decoding: 'async' })
       ]);
       card.appendChild(thumb);
       card.appendChild(h('h3', { id: 'tpl-n-' + t.id, text: t.name }));
@@ -64,7 +51,6 @@
       ]));
       track.appendChild(card);
     });
-    initScaled(track);
     track.addEventListener('click', function (e) {
       var p = e.target.closest('[data-preview]'), c = e.target.closest('[data-choose]');
       if (p) openPreview(p.getAttribute('data-preview'), p);
@@ -164,12 +150,14 @@
       var ico = h('div', { class: 'addon__ico', 'aria-hidden': 'true' });
       ico.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">' + (ICONS[a.icon] || '') + '</svg>';
       var ul = h('ul', {}, a.details.map(function (d) { return h('li', { text: d }); }));
+      var det = h('details', {}, [h('summary', { text: 'Leistungen anzeigen' }), ul]);
+      if (window.matchMedia('(min-width:960px)').matches) det.open = true;
       var price = h('div', { class: 'addon__price' }, [
         (a.priceFrom ? 'ab ' : '') + euro(a.price) + ' ',
         h('small', { text: a.type === 'monthly' ? 'pro Monat, wiederkehrend' : (a.maxQty > 1 ? 'einmalig pro Stück' : 'einmalig') })
       ]);
       var btn = h('button', { type: 'button', class: 'btn btn--gold btn--sm', 'data-addon': a.id, 'aria-pressed': 'false', 'aria-label': a.name + ' hinzufügen', text: 'Hinzufügen +' });
-      var card = h('article', { class: 'addon', 'data-addon-card': a.id }, [ico, h('h3', { text: a.name }), h('p', { text: a.short }), ul, price, btn]);
+      var card = h('article', { class: 'addon', 'data-addon-card': a.id }, [ico, h('h3', { text: a.name }), h('p', { text: a.short }), det, price, btn]);
       wrap.appendChild(card);
     });
     wrap.addEventListener('click', function (e) {
@@ -217,6 +205,29 @@
     });
   }
 
-  fillPrices(); renderBase(); renderTemplates(); renderAddons(); renderFaq(); initScaled();
+  /* Dezente Bewegung: Zierlinie über den Sektionsüberschriften wird beim Einblenden gezeichnet */
+  function initReveal() {
+    var heads = document.querySelectorAll('.section__head');
+    if (!('IntersectionObserver' in window)) { heads.forEach(function (n) { n.classList.add('in'); }); return; }
+    var io = new IntersectionObserver(function (es) { es.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }); }, { threshold: .4 });
+    heads.forEach(function (n) { io.observe(n); });
+  }
+
+  /* Mobil: Festpreis-Leiste mit kontextabhängiger Aktion (erscheint nach dem Hero) */
+  var mbarState = null;
+  function initMobileBar() {
+    var bar = $('#mbar'), btn = $('#mbar-btn'), hero = $('.hero');
+    if (!bar || !hero) return;
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (es) { bar.classList.toggle('is-on', !es[0].isIntersecting); }, { threshold: 0 }).observe(hero);
+    btn.addEventListener('click', function () {
+      var s = CART.state();
+      if (!s.cart.template) { $('#designvorlagen').scrollIntoView({ behavior: 'smooth' }); return; }
+      if (!s.cart.base) { CART.addBase(); UI.toast('Die Makler-Website wurde in den Warenkorb gelegt.'); return; }
+      location.href = 'bestellung.html';
+    });
+    CART.onChange(function (s) { btn.textContent = !s.cart.template ? 'Vorlage wählen' : !s.cart.base ? 'In den Warenkorb' : 'Zur Kasse'; });
+  }
+
+  fillPrices(); renderBase(); renderTemplates(); renderAddons(); renderFaq(); initReveal(); initMobileBar();
   CART.onChange(function (s) { markSelected(s); markAddons(s); });
 })();

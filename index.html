@@ -13,9 +13,14 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#102b46">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="canonical" href="https://wertcheck.github.io/Maklerweb/">
+<link rel="preload" href="assets/fonts/fraunces-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/instrument-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="css/fonts.css">
 <link rel="stylesheet" href="css/styles.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Product","name":"Makler-Website zum Festpreis","description":"Fertige Website für Immobilienmakler mit Auswahl aus fünf Designvorlagen.","brand":{"@type":"Brand","name":"MAKLERWEB"},"offers":{"@type":"Offer","price":"799","priceCurrency":"EUR","availability":"https://schema.org/InStock","url":"https://wertcheck.github.io/Maklerweb/#preise"}}</script>
 </head>
-<body data-root="">
+<body data-root="" class="has-mbar">
 <a class="skip" href="#main">Zum Inhalt springen</a>
 
 <header class="site-header">
@@ -33,7 +38,7 @@
     </nav>
     <button class="cart-btn" type="button" data-cart-open aria-label="Warenkorb öffnen">
       <svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 5h4l3 15h15l3-11H9"/><circle cx="13" cy="26" r="2"/><circle cx="24" cy="26" r="2"/></svg>
-      <span data-cart-count aria-label="0 Positionen im Warenkorb">0</span>
+      <span data-cart-count>0</span>
     </button>
     <a class="btn btn--primary header-cta" href="bestellung.html">Jetzt Website bestellen →</a>
     <button class="menu-btn" id="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Menü öffnen">☰</button>
@@ -43,9 +48,9 @@
 <main id="main">
   <section class="hero" aria-labelledby="hero-h">
     <div class="wrap hero__grid">
-      <div>
+      <div class="hero__in">
         <p class="eyebrow">Professionelle Websites für Immobilienmakler</p>
-        <h1 id="hero-h">Ihre Makler-Website.<em>Zum Festpreis.</em></h1>
+        <h1 id="hero-h">Ihre Makler-Website. <em>Zum Festpreis.</em></h1>
         <p class="hero__lead">Modern, professionell und in wenigen Tagen online – ohne Technikstress.</p>
         <ul class="ticks">
           <li>Aus verschiedenen Designvorlagen wählen</li>
@@ -57,12 +62,12 @@
           <span class="price-hint">Festpreis <b data-price="base"></b> einmalig</span>
         </div>
       </div>
-      <div class="devices" aria-hidden="true">
+      <div class="devices hero__in" aria-hidden="true">
         <div class="laptop">
-          <div class="laptop__screen"><div class="scaled" data-w="1280" data-h="800"><iframe src="demo/persoenlich.html" tabindex="-1" loading="eager" title="" width="1280" height="800"></iframe></div></div>
+          <div class="laptop__screen"><img class="shot" src="assets/thumbs/hero-laptop.webp" alt="" width="1152" height="720" fetchpriority="high" decoding="async"></div>
           <div class="laptop__base"></div>
         </div>
-        <div class="phone"><div class="scaled" data-w="390" data-h="800"><iframe src="demo/klassisch.html" tabindex="-1" title="" width="390" height="800"></iframe></div></div>
+        <div class="phone"><img class="shot" src="assets/thumbs/hero-phone.webp" alt="" width="585" height="1200" decoding="async"></div>
       </div>
     </div>
     <div class="wrap trust">
@@ -75,7 +80,7 @@
 
   <section class="section" id="designvorlagen" aria-labelledby="tpl-h">
     <div class="wrap">
-      <div class="section__head"><p class="eyebrow">Designvorlagen</p><h2 id="tpl-h">Wählen Sie Ihre passende Vorlage</h2>
+      <div class="section__head"><p class="eyebrow">Designvorlagen</p><h2 id="tpl-h">Wählen Sie Ihre <em>passende</em> Vorlage</h2>
         <p>Fünf eigenständige Designs für unterschiedliche Ansprüche – alle modern, mobiloptimiert und speziell für Immobilienmakler entwickelt. Der Preis ist bei jeder Vorlage gleich.</p></div>
       <div class="carousel" role="region" aria-roledescription="Karussell" aria-label="Designvorlagen">
         <div class="track" id="tpl-track" tabindex="0" aria-label="Vorlagen, horizontal scrollbar"></div>
@@ -103,8 +108,8 @@
           <p class="chosen" id="chosen-tpl" aria-live="polite"></p>
         </div>
         <div class="price-card__r">
-          <h3 class="full">Im Festpreis enthalten</h3>
-          <ul id="includes"></ul>
+          <div><h3>Im Festpreis enthalten</h3>
+          <ul id="includes"></ul></div>
           <div>
             <h3>Nicht im Festpreis enthalten</h3>
             <ul class="no" id="excludes"></ul>
@@ -116,7 +121,7 @@
 
   <section class="section" id="leistungen" aria-labelledby="add-h">
     <div class="wrap">
-      <div class="section__head"><p class="eyebrow">Optional dazu buchen</p><h2 id="add-h">Erweitern Sie Ihre Website nach Ihren Bedürfnissen</h2><p>Buchen Sie genau die Leistungen hinzu, die Sie benötigen.</p></div>
+      <div class="section__head"><p class="eyebrow">Optional dazu buchen</p><h2 id="add-h">Erweitern Sie Ihre Website <em>nach Ihren Bedürfnissen</em></h2><p>Buchen Sie genau die Leistungen hinzu, die Sie benötigen.</p></div>
       <div class="addons" id="addons"></div>
       <p class="muted small" style="text-align:center;margin-top:18px">Der monatliche Support wird nie automatisch ausgewählt und ist jederzeit abwählbar. <span data-tax-note></span></p>
     </div>
@@ -124,7 +129,7 @@
 
   <section class="section section--alt" id="ablauf" aria-labelledby="flow-h">
     <div class="wrap">
-      <div class="section__head"><p class="eyebrow">So einfach funktioniert’s</p><h2 id="flow-h">In vier Schritten zur Website</h2></div>
+      <div class="section__head"><p class="eyebrow">So einfach funktioniert’s</p><h2 id="flow-h">In vier Schritten <em>zur Website</em></h2></div>
       <ol class="steps">
         <li><b>01</b><h3>Vorlage wählen</h3><p>Wählen Sie das Design, das zu Ihrem Unternehmen passt.</p></li>
         <li><b>02</b><h3>Leistungen ergänzen</h3><p>Buchen Sie Logo, Texte oder weitere Funktionen bei Bedarf hinzu.</p></li>
@@ -136,7 +141,7 @@
 
   <section class="section" id="warum" aria-labelledby="why-h">
     <div class="wrap">
-      <div class="section__head"><p class="eyebrow">Warum MAKLERWEB?</p><h2 id="why-h">Klar, einfach und auf Makler zugeschnitten</h2></div>
+      <div class="section__head"><p class="eyebrow">Warum MAKLERWEB?</p><h2 id="why-h">Klar, einfach und <em>auf Makler zugeschnitten</em></h2></div>
       <ul class="benefits">
         <li>Speziell für Immobilienmakler entwickelt</li>
         <li>Transparenter Festpreis</li>
@@ -152,13 +157,13 @@
 
   <section class="section section--alt" id="faq" aria-labelledby="faq-h">
     <div class="wrap">
-      <div class="section__head"><p class="eyebrow">FAQ</p><h2 id="faq-h">Häufige Fragen</h2></div>
+      <div class="section__head"><p class="eyebrow">FAQ</p><h2 id="faq-h">Häufige <em>Fragen</em></h2></div>
       <div class="faq" id="faq-list"></div>
     </div>
   </section>
 
   <section class="cta-band">
-    <div class="wrap"><h2>Bereit für Ihre eigene Makler-Website?</h2><a class="btn btn--gold" href="#designvorlagen">Jetzt Designvorlage wählen →</a></div>
+    <div class="wrap"><h2>Bereit für Ihre <em>eigene</em> Makler-Website?</h2><a class="btn btn--gold" href="#designvorlagen">Jetzt Designvorlage wählen →</a></div>
   </section>
 </main>
 
@@ -171,6 +176,10 @@
   </div>
 </footer>
 
+<aside class="mbar" id="mbar" aria-label="Schnellaktion">
+  <div class="mbar__p"><small>Festpreis einmalig</small><b data-price="base"></b></div>
+  <button class="btn btn--primary" type="button" id="mbar-btn">Vorlage wählen</button>
+</aside>
 <script src="js/catalog.js"></script>
 <script src="js/config.js"></script>
 <script src="js/cart.js"></script>

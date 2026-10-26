@@ -1,0 +1,12 @@
+{
+  "name": "maklerweb",
+  "private": true,
+  "description": "Statische Shop-Website – keine Laufzeit-Abhängigkeiten. devDependencies nur für Tests (Playwright wird separat bereitgestellt).",
+  "scripts": {
+    "test": "node --test tests/pricing.test.js",
+    "e2e": "node tests/e2e.js",
+    "a11y": "node tests/a11y-perf.js",
+    "thumbs": "node tools/make-thumbs.js"
+  },
+  "devDependencies": { "axe-core": "^4.10.0" }
+}

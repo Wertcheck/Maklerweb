@@ -5,11 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Demo: Regional &amp; Nahbar – MAKLERWEB</title>
+<link rel="preload" href="../assets/fonts/instrument-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="demo-motion.css">
 <style>
 :root{--sky:#e9f3f1;--water:#2f7a8c;--leaf:#4e7a4a;--sun:#f0b84a;--ink:#1f3a3f;--white:#fff}
 *{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;background:#f6faf6;color:var(--ink);font:17px/1.65 "Trebuchet MS","Segoe UI",Arial,sans-serif}
-h1,h2,h3{font-family:"Trebuchet MS","Segoe UI",Arial,sans-serif;font-weight:700;line-height:1.15;margin:0}
+body{margin:0;background:#f6faf6;color:var(--ink);font:17px/1.65 "Instrument Sans","Segoe UI",Arial,sans-serif}
+h1,h2,h3{font-family:"Instrument Sans",Arial,sans-serif;font-weight:700;letter-spacing:-.015em;line-height:1.15;margin:0}
 a{color:inherit}img{display:block;max-width:100%}
 .demo-tag{background:var(--leaf);color:#fff;font-size:12px;text-align:center;padding:5px 10px}
 /* Kopf: Logo + Wetter-/Regionsleiste */
@@ -30,7 +33,7 @@ section{padding:70px max(20px,5vw)}
 .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
 .prop{display:grid;grid-template-columns:44% 1fr;background:var(--white);border-radius:22px;overflow:hidden;box-shadow:0 6px 22px #1f3a3f14}
 .prop img{width:100%;height:100%;min-height:190px;object-fit:cover}.prop div{padding:20px}
-.tag{display:inline-block;background:var(--sky);color:var(--water);font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;margin-bottom:8px}
+.tag{display:inline-block;background:var(--sky);color:#1d5666;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;margin-bottom:8px}
 .prop h3{font-size:19px}.prop p{margin:6px 0 10px;color:#4d6a6c;font-size:15px}.prop b{color:var(--leaf)}
 /* Regionale Expertise: Ortsliste + Karte */
 .exp{background:var(--sky);display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}

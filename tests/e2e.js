@@ -114,6 +114,10 @@ const ok = (c, m) => { console.log((c ? 'PASS ' : 'FAIL ') + m); if (!c) fails++
   await m.goto(BASE + '/index.html'); await m.waitForTimeout(1000);
   ok((await m.evaluate(() => document.documentElement.scrollWidth - innerWidth)) <= 0, 'Startseite mobil: kein horizontaler Überlauf');
   await m.screenshot({ path: `${QA}/09-home-mobile.png` });
+  await m.evaluate(() => scrollTo(0, 1600)); await m.waitForTimeout(700);
+  ok(await m.locator('#mbar.is-on').count() === 1, 'Mobil: Festpreis-Leiste erscheint nach dem Hero');
+  ok((await m.locator('#mbar-btn').textContent()).includes('Vorlage wählen'), 'Mobil: Leiste fordert zur Vorlagenwahl auf');
+  await m.evaluate(() => scrollTo(0, 0));
   await m.click('#menu-toggle'); ok(await m.locator('#site-nav.is-open').count() === 1, 'Mobiles Menü öffnet');
   await m.screenshot({ path: `${QA}/10-menu-mobile.png` });
   await m.click('#site-nav a[href="#faq"]'); await m.waitForTimeout(500);
@@ -124,6 +128,13 @@ const ok = (c, m) => { console.log((c ? 'PASS ' : 'FAIL ') + m); if (!c) fails++
   await m.goto(BASE + '/bestellung.html'); await m.waitForTimeout(300);
   ok((await m.evaluate(() => document.documentElement.scrollWidth - innerWidth)) <= 0, 'Kasse mobil: kein Überlauf');
   await m.screenshot({ path: `${QA}/13-checkout-mobile.png`, fullPage: true });
+
+  // Strukturierte Daten stimmen mit der zentralen Preiskonfiguration überein
+  await p.goto(BASE + '/index.html');
+  const ld = JSON.parse(await p.locator('script[type="application/ld+json"]').textContent());
+  const basePrice = await p.evaluate(() => window.MW_CATALOG.catalog.base.price);
+  ok(+ld.offers.price === basePrice, 'JSON-LD-Preis == catalog.js (' + basePrice + ')');
+  ok(await p.locator('link[rel=canonical]').count() === 1 && await p.locator('meta[property="og:image"]').count() === 1, 'Canonical + Open-Graph vorhanden');
 
   // Rechtsseiten erreichbar
   for (const pg of ['impressum', 'datenschutz', 'agb', 'widerruf']) { const r = await p.goto(`${BASE}/${pg}.html`); ok(r.status() === 200, pg + ' erreichbar'); }

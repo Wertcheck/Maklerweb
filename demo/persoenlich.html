@@ -5,15 +5,18 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Demo: Persönlich &amp; Vertrauensvoll – MAKLERWEB</title>
+<link rel="preload" href="../assets/fonts/instrument-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="demo-motion.css">
 <style>
-:root{--bg:#fbf4ea;--peach:#f2dcc2;--terra:#b9683f;--deep:#3a2a22;--green:#5c7a62;--card:#fff}
+:root{--bg:#fbf4ea;--peach:#f2dcc2;--terra:#a4552f;--deep:#3a2a22;--green:#3f5f47;--card:#fff}
 *{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--deep);font:17px/1.65 "Segoe UI","Helvetica Neue",Arial,sans-serif}
-h1,h2,h3{font-family:Georgia,"Iowan Old Style",serif;font-weight:600;line-height:1.15;margin:0}
+body{margin:0;background:var(--bg);color:var(--deep);font:17px/1.65 "Instrument Sans","Segoe UI",Arial,sans-serif}
+h1,h2,h3{font-family:"Fraunces",Georgia,serif;font-weight:500;line-height:1.15;margin:0}
 a{color:inherit}img{display:block;max-width:100%}
 .demo-tag{background:var(--terra);color:#fff;font-size:12px;text-align:center;padding:5px 10px}
 header{display:flex;justify-content:space-between;align-items:center;padding:18px max(20px,6vw);gap:14px;flex-wrap:wrap}
-.logo{font:600 22px Georgia,serif;text-decoration:none}.logo span{color:var(--terra)}
+.logo{font:500 24px "Fraunces",Georgia,serif;text-decoration:none}.logo span{color:var(--terra)}
 header nav{display:flex;gap:24px;font-size:15px;flex-wrap:wrap}header nav a{text-decoration:none}
 .pill{display:inline-flex;align-items:center;gap:8px;background:var(--terra);color:#fff;text-decoration:none;padding:13px 24px;border-radius:999px;font-weight:600}
 .pill--soft{background:var(--peach);color:var(--deep)}
@@ -32,8 +35,8 @@ header nav{display:flex;gap:24px;font-size:15px;flex-wrap:wrap}header nav a{text
 section{padding:80px max(20px,6vw)}
 .sec-h{margin-bottom:34px}.sec-h h2{font-size:clamp(30px,3.8vw,44px)}.sec-h p{margin:8px 0 0;color:#6a574c}
 .intro{display:grid;grid-template-columns:1fr 1.2fr;gap:50px;align-items:start}
-.quote{background:var(--card);border-radius:24px;padding:34px;box-shadow:0 10px 30px #3a2a2214;font:italic 22px/1.5 Georgia,serif}
-.quote cite{display:block;margin-top:14px;font:600 14px "Segoe UI",Arial,sans-serif;font-style:normal;color:var(--terra)}
+.quote{background:var(--card);border-radius:24px;padding:34px;box-shadow:0 10px 30px #3a2a2214;font:italic 400 23px/1.5 "Fraunces",Georgia,serif}
+.quote cite{display:block;margin-top:14px;font:600 14px "Instrument Sans",Arial,sans-serif;font-style:normal;color:var(--terra)}
 /* Arbeitsweise als Zeitleiste */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:s}
 .step{background:var(--card);border-radius:20px;padding:24px;position:relative}
@@ -42,11 +45,11 @@ section{padding:80px max(20px,6vw)}
 /* Immobilien als Listenzeilen */
 .list{display:grid;gap:16px}
 .item{display:grid;grid-template-columns:230px 1fr auto;gap:22px;align-items:center;background:var(--card);border-radius:20px;overflow:hidden;padding-right:24px}
-.item img{width:100%;height:150px;object-fit:cover}.item h3{font-size:21px}.item p{margin:4px 0 0;color:#6a574c;font-size:15px}.item b{color:var(--terra);font-size:18px;white-space:nowrap}
+.item img{width:100%;height:150px;object-fit:cover}.item h3{font-size:21px}.item p{margin:4px 0 0;color:#6a574c;font-size:15px}.item b{color:#9a4f2b;font-size:18px;white-space:nowrap}
 .contact{background:var(--deep);color:#fbf4ea;border-radius:32px;margin:0 max(20px,6vw) 70px;padding:56px;display:grid;grid-template-columns:1.2fr 1fr;gap:34px;align-items:center}
 .contact h2{font-size:clamp(30px,3.8vw,44px)}.contact p{opacity:.85}
 .contact .btns{display:grid;gap:12px}.contact .pill{justify-content:center}
-footer{text-align:center;font-size:13px;color:#8a7568;padding:0 20px 30px}
+footer{text-align:center;font-size:13px;color:#66503f;padding:0 20px 30px}
 @media(max-width:860px){
  header nav{display:none}.hero{grid-template-columns:1fr;padding-bottom:50px}.portrait .float{left:10px}
  .intro,.steps,.contact{grid-template-columns:1fr}.item{grid-template-columns:1fr;padding:0 0 16px}.item>*{margin:0 18px}.item img{margin:0;height:170px}
