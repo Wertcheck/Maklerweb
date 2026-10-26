@@ -5,17 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex">
 <title>Demo: Urban &amp; Modern – MAKLERWEB</title>
+<link rel="preload" href="../assets/fonts/instrument-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="demo-motion.css">
 <style>
 :root{--navy:#0b1e33;--navy2:#13304a;--paper:#f3f5f7;--gold:#e0b46a;--ink:#0b1e33}
 *{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;background:var(--navy);color:#e8eef4;font:16px/1.6 "Helvetica Neue",Arial,sans-serif}
-h1,h2,h3{font-family:"Arial Narrow","Helvetica Neue",Arial,sans-serif;font-weight:800;text-transform:uppercase;letter-spacing:-.01em;margin:0;line-height:.98}
+body{margin:0;background:var(--navy);color:#e8eef4;font:16px/1.6 "Instrument Sans","Segoe UI",Arial,sans-serif}
+h1,h2,h3{font-family:"Instrument Sans",Arial,sans-serif;font-weight:700;text-transform:uppercase;letter-spacing:-.01em;margin:0;line-height:.98}
 a{color:inherit}img{display:block;max-width:100%}
 .demo-tag{background:var(--gold);color:var(--navy);font-size:12px;font-weight:700;text-align:center;padding:5px 10px;letter-spacing:.04em}
 /* Linke Seitenleiste auf Desktop, oben auf Mobil */
 .shell{display:grid;grid-template-columns:230px minmax(0,1fr);min-height:100vh}
 .side{position:sticky;top:0;align-self:start;height:100vh;padding:32px 26px;border-right:1px solid #ffffff1f;display:flex;flex-direction:column;justify-content:space-between}
-.logo{font:800 22px/1 "Arial Narrow",Arial,sans-serif;letter-spacing:.04em;text-decoration:none}.logo span{color:var(--gold)}
+.logo{font:700 22px/1 "Instrument Sans",Arial,sans-serif;letter-spacing:.04em;text-decoration:none}.logo span{color:var(--gold)}
 .side nav{display:grid;gap:14px;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
 .side nav a{text-decoration:none;opacity:.8}.side nav a:hover{opacity:1;color:var(--gold)}
 .side small{opacity:.55}
@@ -26,7 +29,7 @@ a{color:inherit}img{display:block;max-width:100%}
 .hero__img{clip-path:polygon(14% 0,100% 0,100% 100%,0 100%);overflow:hidden}.hero__img img{width:100%;height:100%;object-fit:cover}
 .btn{display:inline-block;background:var(--gold);color:var(--navy);font-weight:700;padding:15px 28px;text-decoration:none;text-transform:uppercase;letter-spacing:.08em;font-size:13px;width:max-content}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);background:var(--navy2)}
-.stats div{padding:26px 36px;border-left:1px solid #ffffff1f}.stats b{display:block;font:800 40px/1 "Arial Narrow",Arial,sans-serif;color:var(--gold)}.stats span{font-size:13px;opacity:.75}
+.stats div{padding:26px 36px;border-left:1px solid #ffffff1f}.stats b{display:block;font:700 40px/1 "Instrument Sans",Arial,sans-serif;color:var(--gold)}.stats span{font-size:13px;opacity:.75}
 section{padding:80px 48px}
 .sec-h{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:36px}.sec-h h2{font-size:clamp(34px,4.4vw,60px)}.sec-h span{opacity:.6;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
 /* Bento-Raster */
@@ -38,9 +41,9 @@ section{padding:80px 48px}
 .light{background:var(--paper);color:var(--ink)}
 .light .sec-h span{opacity:.7}
 .region{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:2px solid var(--ink)}
-.region div{padding:26px 24px 10px 0}.region b{font:800 54px/1 "Arial Narrow",Arial,sans-serif;color:#c58f33}.region p{margin:8px 0 0;color:#3b4b5c}
+.region div{padding:26px 24px 10px 0}.region b{font:700 54px/1 "Instrument Sans",Arial,sans-serif;color:#80540a}.region p{margin:8px 0 0;color:#3b4b5c}
 .rows{border-top:1px solid #ffffff33}.row{display:grid;grid-template-columns:70px 1fr 1.2fr;gap:20px;padding:24px 0;border-bottom:1px solid #ffffff33;align-items:baseline}
-.row i{font:800 20px "Arial Narrow",Arial,sans-serif;color:var(--gold);font-style:normal}.row h3{font-size:26px}.row p{margin:0;opacity:.8}
+.row i{font:700 20px "Instrument Sans",Arial,sans-serif;color:var(--gold);font-style:normal}.row h3{font-size:26px}.row p{margin:0;opacity:.8}
 .cta{background:var(--gold);color:var(--navy);display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center}
 .cta h2{font-size:clamp(36px,5vw,70px)}.cta dl{margin:0}.cta dt{font-size:12px;letter-spacing:.18em;text-transform:uppercase;font-weight:700}.cta dd{margin:0 0 12px;font-size:20px;font-weight:700}
 .cta .btn{background:var(--navy);color:#fff;margin-top:6px}

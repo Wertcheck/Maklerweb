@@ -12,7 +12,10 @@
   var submitting = false;
 
   /* ---------- Zusammenfassung (Seitenleiste) ---------- */
+  var sumD = document.getElementById('summary-d'), sumTotal = document.getElementById('sum-total');
+  if (window.matchMedia('(min-width:960px)').matches) sumD.open = true;
   function renderSummary(s) {
+    sumTotal.textContent = s.lines.length ? euro(s.oneTimeTotal) : '';
     summary.textContent = '';
     if (!s.lines.length) { summary.appendChild(h('p', { class: 'muted', text: 'Noch nichts im Warenkorb.' })); return; }
     var t = s.cart.template && C.findTemplate(s.cart.template);

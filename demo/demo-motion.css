@@ -1,0 +1,9 @@
+/* Dezente Mikro-Interaktionen für alle Demo-Vorlagen */
+.card,.tile,.item,.prop,.step,.svc>div,.est .pic,.btn,.pill,.chips a,.towns li{transition:transform .45s cubic-bezier(.2,.7,.2,1),box-shadow .45s cubic-bezier(.2,.7,.2,1),background-color .25s}
+.card:hover,.item:hover,.prop:hover,.step:hover{transform:translateY(-4px)}
+.tile img,.card img,.item img,.prop img,.pic img{transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
+.tile:hover img,.card:hover img,.item:hover img,.prop:hover img,.pic:hover img{transform:scale(1.04)}
+.tile,.card,.item,.prop,.pic{overflow:hidden}
+.btn:hover,.pill:hover,.chips a:hover{transform:translateY(-2px)}
+a:focus-visible,button:focus-visible{outline:3px solid currentColor;outline-offset:3px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}

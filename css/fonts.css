@@ -1,0 +1,7 @@
+/* Self-hosted Schriften (keine Verbindung zu Drittservern). Subset: latin, inkl. Umlaute, ß und €. */
+@font-face{font-family:"Fraunces";font-style:normal;font-weight:100 900;font-display:swap;src:url(../assets/fonts/fraunces-latin-wght-normal.woff2) format("woff2")}
+@font-face{font-family:"Fraunces";font-style:italic;font-weight:100 900;font-display:swap;src:url(../assets/fonts/fraunces-latin-wght-italic.woff2) format("woff2")}
+@font-face{font-family:"Instrument Sans";font-style:normal;font-weight:400 700;font-display:swap;src:url(../assets/fonts/instrument-sans-latin-wght-normal.woff2) format("woff2")}
+@font-face{font-family:"Cormorant Garamond";font-style:normal;font-weight:300;font-display:swap;src:url(../assets/fonts/cormorant-garamond-latin-300-normal.woff2) format("woff2")}
+@font-face{font-family:"Cormorant Garamond";font-style:normal;font-weight:500;font-display:swap;src:url(../assets/fonts/cormorant-garamond-latin-500-normal.woff2) format("woff2")}
+@font-face{font-family:"Cormorant Garamond";font-style:italic;font-weight:500;font-display:swap;src:url(../assets/fonts/cormorant-garamond-latin-500-italic.woff2) format("woff2")}

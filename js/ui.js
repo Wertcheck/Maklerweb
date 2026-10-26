@@ -107,7 +107,9 @@
   function totalsBlock(s) {
     var d = h('dl', { class: 'totals' });
     d.appendChild(h('dt', { text: 'Einmaliger Gesamtpreis' }));
-    d.appendChild(h('dd', { class: 'totals__big', text: euro(s.oneTimeTotal) }));
+    var big = h('dd', { class: 'totals__big', text: euro(s.oneTimeTotal) });
+    tween(big, s.oneTimeTotal);
+    d.appendChild(big);
     if (s.monthlyTotal > 0) {
       d.appendChild(h('dt', { text: 'Wiederkehrend (monatlich)' }));
       d.appendChild(h('dd', { text: euro(s.monthlyTotal) + ' / Monat' }));
@@ -136,13 +138,28 @@
       });
     }
     document.querySelectorAll('[data-tax-note]').forEach(function (n) { n.textContent = taxText(); });
+    var hd = document.querySelector('.site-header');
+    if (hd) { var on = function () { hd.classList.toggle('is-scrolled', window.scrollY > 8); }; on(); window.addEventListener('scroll', on, { passive: true }); }
   }
 
+  /* Zahl weich hochzählen (respektiert prefers-reduced-motion) */
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var lastTotal = null;
+  function tween(el, to) {
+    var from = lastTotal === null ? to : lastTotal; lastTotal = to;
+    if (reduce || from === to || !window.requestAnimationFrame) { el.textContent = euro(to); return; }
+    var t0 = null;
+    function f(t) { t0 = t0 || t; var k = Math.min(1, (t - t0) / 450), e = 1 - Math.pow(1 - k, 3); el.textContent = euro(Math.round(from + (to - from) * e)); if (k < 1) requestAnimationFrame(f); else el.textContent = euro(to); }
+    requestAnimationFrame(f);
+  }
+  var lastCount = null;
   CART.onChange(function (s) {
     document.querySelectorAll('[data-cart-count]').forEach(function (n) {
+      if (lastCount !== null && lastCount !== s.itemCount && !reduce) { n.classList.remove('bump'); void n.offsetWidth; n.classList.add('bump'); }
       n.textContent = String(s.itemCount);
-      n.setAttribute('aria-label', s.itemCount + ' Positionen im Warenkorb');
+      var btn = n.closest('button'); if (btn) btn.setAttribute('aria-label', s.itemCount + ' Positionen im Warenkorb – Warenkorb öffnen');
     });
+    lastCount = s.itemCount;
     renderDrawer(s);
   });
 
