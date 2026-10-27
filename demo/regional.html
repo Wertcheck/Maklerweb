@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Demo: Regional &amp; Nahbar – MAKLERWEB</title>
+<link rel="preload" href="../assets/fonts/instrument-sans-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../css/fonts.css">
+<link rel="stylesheet" href="demo-motion.css">
+<style>
+:root{--sky:#e9f3f1;--water:#2f7a8c;--leaf:#4e7a4a;--sun:#f0b84a;--ink:#1f3a3f;--white:#fff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:#f6faf6;color:var(--ink);font:17px/1.65 "Instrument Sans","Segoe UI",Arial,sans-serif}
+h1,h2,h3{font-family:"Instrument Sans",Arial,sans-serif;font-weight:700;letter-spacing:-.015em;line-height:1.15;margin:0}
+a{color:inherit}img{display:block;max-width:100%}
+.demo-tag{background:var(--leaf);color:#fff;font-size:12px;text-align:center;padding:5px 10px}
+/* Kopf: Logo + Wetter-/Regionsleiste */
+header{background:var(--white);border-bottom:3px solid var(--sun);display:flex;justify-content:space-between;align-items:center;padding:14px max(20px,5vw);gap:12px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;font-size:21px}
+.logo i{width:34px;height:34px;border-radius:50% 50% 50% 8px;background:var(--water);display:inline-block}
+header nav{display:flex;gap:6px;flex-wrap:wrap}header nav a{text-decoration:none;padding:8px 14px;border-radius:999px;font-size:15px}header nav a:hover{background:var(--sky)}
+/* Hero: Bild mit aufgelegter Ortswahl */
+.hero{position:relative;margin:22px max(20px,5vw) 0;border-radius:28px;overflow:hidden;min-height:480px;display:flex;align-items:flex-end}
+.hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,#0000 30%,#0d2a30cc)}
+.hero__in{position:relative;z-index:1;color:#fff;padding:34px;width:100%}
+.hero h1{font-size:clamp(34px,5vw,60px);max-width:640px}.hero p{max-width:520px;margin:10px 0 18px}
+.chips{display:flex;gap:8px;flex-wrap:wrap}.chips a{background:#ffffffee;color:var(--ink);text-decoration:none;padding:9px 16px;border-radius:999px;font-weight:600;font-size:14px}
+section{padding:70px max(20px,5vw)}
+.sec-h{display:flex;justify-content:space-between;align-items:end;gap:14px;flex-wrap:wrap;margin-bottom:26px}.sec-h h2{font-size:clamp(28px,3.4vw,40px)}.sec-h p{margin:0;color:#4d6a6c}
+/* Immobilien: Karten mit Ortsmarke, 2 Spalten */
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px}
+.prop{display:grid;grid-template-columns:44% 1fr;background:var(--white);border-radius:22px;overflow:hidden;box-shadow:0 6px 22px #1f3a3f14}
+.prop img{width:100%;height:100%;min-height:190px;object-fit:cover}.prop div{padding:20px}
+.tag{display:inline-block;background:var(--sky);color:#1d5666;font-size:12px;font-weight:700;padding:4px 10px;border-radius:999px;margin-bottom:8px}
+.prop h3{font-size:19px}.prop p{margin:6px 0 10px;color:#4d6a6c;font-size:15px}.prop b{color:var(--leaf)}
+/* Regionale Expertise: Ortsliste + Karte */
+.exp{background:var(--sky);display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.map{aspect-ratio:4/3;border-radius:26px;background:#cfe6e0;position:relative;overflow:hidden}
+.map svg{width:100%;height:100%}
+.towns{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:18px 0 0;padding:0;list-style:none}
+.towns li{background:var(--white);padding:12px 14px;border-radius:14px;font-weight:600}.towns li::before{content:"● ";color:var(--sun)}
+.svc{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.svc div{background:var(--white);border-radius:22px;padding:26px;border-top:5px solid var(--water)}.svc div:nth-child(2){border-color:var(--leaf)}.svc div:nth-child(3){border-color:var(--sun)}
+.svc h3{font-size:20px;margin-bottom:6px}.svc p{margin:0;color:#4d6a6c;font-size:15px}
+.contact{background:var(--water);color:#fff;display:flex;justify-content:space-between;align-items:center;gap:24px;flex-wrap:wrap}
+.contact h2{font-size:clamp(28px,3.4vw,40px)}.contact a{background:var(--sun);color:var(--ink);text-decoration:none;font-weight:800;padding:15px 28px;border-radius:999px}
+footer{text-align:center;padding:22px;font-size:13px;color:#5a7578}
+@media(max-width:860px){
+ header nav{display:none}.hero{min-height:400px;margin:14px 14px 0}.hero__in{padding:22px}
+ .grid,.exp,.svc{grid-template-columns:1fr}.prop{grid-template-columns:1fr}.prop img{height:180px}section{padding:46px 18px}
+}
+</style>
+</head>
+<body>
+<div class="demo-tag">DEMO-VORSCHAU · Fiktive Inhalte · Vorlage „Regional &amp; Nahbar“</div>
+<header>
+  <a class="logo" href="#top"><i></i>Küstenheim Immobilien</a>
+  <nav aria-label="Demo-Navigation"><a href="#region">In der Region</a><a href="#kenntnis">Ortskenntnis</a><a href="#service">Service</a><a href="#kontakt">Kontakt</a></nav>
+</header>
+<main id="top">
+  <div class="hero">
+    <img src="../assets/img/lake-house.svg" alt="Illustration eines Hauses am Wasser">
+    <div class="hero__in">
+      <h1>Ihr Zuhause am Wasser – und überall in unserer Region.</h1>
+      <p>Wir kennen Straßen, Nachbarschaften und Menschen vor Ort. (Beispieltext)</p>
+      <div class="chips"><a href="#region">Am See</a><a href="#region">Im Ortskern</a><a href="#region">Im Grünen</a><a href="#region">Neubau</a></div>
+    </div>
+  </div>
+  <section id="region">
+    <div class="sec-h"><h2>Immobilien in der Region</h2><p>Beispielobjekte</p></div>
+    <div class="grid">
+      <article class="prop"><img src="../assets/img/lake-house.svg" alt="" loading="lazy"><div><span class="tag">Am See</span><h3>Landhaus mit Seeblick</h3><p>6 Zimmer · 190 m² · Beispielort</p><b>Beispiel: 679.000 €</b></div></article>
+      <article class="prop"><img src="../assets/img/regional.svg" alt="" loading="lazy"><div><span class="tag">Im Grünen</span><h3>Doppelhaushälfte</h3><p>5 Zimmer · 135 m² · Beispielort</p><b>Beispiel: 459.000 €</b></div></article>
+      <article class="prop"><img src="../assets/img/apartments.svg" alt="" loading="lazy"><div><span class="tag">Ortskern</span><h3>Eigentumswohnung</h3><p>2 Zimmer · 64 m² · Beispielort</p><b>Beispiel: 249.000 €</b></div></article>
+      <article class="prop"><img src="../assets/img/house-classic.svg" alt="" loading="lazy"><div><span class="tag">Ortskern</span><h3>Wohnhaus mit Geschichte</h3><p>7 Zimmer · 210 m² · Beispielort</p><b>Beispiel: 549.000 €</b></div></article>
+    </div>
+  </section>
+  <section class="exp" id="kenntnis">
+    <div class="map" role="img" aria-label="Schematische Illustration einer Regionalkarte"><svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice"><path d="M0 0H400V120C320 90 260 150 180 130S60 110 0 150Z" fill="#8cc3cf"/><path d="M0 150C60 110 120 150 180 130S320 90 400 120V300H0Z" fill="#dfeccd"/><path d="M40 240C120 200 180 230 260 190S360 200 380 170" stroke="#fff" stroke-width="6" fill="none"/><g fill="#f0b84a" stroke="#fff" stroke-width="3"><circle cx="110" cy="205" r="12"/><circle cx="250" cy="190" r="12"/><circle cx="330" cy="185" r="12"/><circle cx="180" cy="160" r="12"/></g></svg></div>
+    <div><div class="sec-h" style="margin-bottom:8px"><h2>Wir kennen unsere Region</h2></div><p>Beispieltext: Hier beschreiben Sie Ihre lokale Marktkenntnis, Ihre Nachbarschaften und Ihre Verbundenheit zum Ort.</p>
+      <ul class="towns"><li>Ortsteil A</li><li>Ortsteil B</li><li>Ortsteil C</li><li>Ortsteil D</li></ul></div>
+  </section>
+  <section id="service">
+    <div class="sec-h"><h2>Kundenservice &amp; Leistungen</h2></div>
+    <div class="svc"><div><h3>Verkauf &amp; Vermietung</h3><p>Von der Einschätzung bis zum Vertrag.</p></div><div><h3>Bewertung vor Ort</h3><p>Wir besichtigen Ihre Immobilie persönlich.</p></div><div><h3>Nachbarschaft kennen</h3><p>Hinweise zu Lage, Infrastruktur und Umfeld.</p></div></div>
+  </section>
+  <section class="contact" id="kontakt"><h2>Kommen Sie auf einen Kaffee vorbei.</h2><a href="#kontakt">Kontakt aufnehmen</a></section>
+</main>
+<footer>© Demo – Küstenheim Immobilien (fiktiv) · Impressum · Datenschutz</footer>
+</body>
+</html>
